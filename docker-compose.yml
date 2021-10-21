@@ -1,0 +1,28 @@
+version: '3'
+services:
+  redis-server:
+    container_name: redis-server
+    image: 'redis'
+    networks:
+      - redisnodenetwork
+    restart: unless-stopped
+
+  node-app:
+    container_name: node-app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    networks:
+      - redisnodenetwork
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    depends_on:
+      - redis-server
+
+networks:
+  redisnodenetwork:
+    driver: bridge
