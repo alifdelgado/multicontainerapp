@@ -1,1 +1,43 @@
-h1 Funcionando
+doctype 5
+html(lang='es')
+    head 
+        title Multicontainer app
+        style.
+            .container {
+                width: 100%;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            form {
+                width: 300px;
+                height: 300px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+            }
+            #number {
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin: 10px 5px;
+            }
+            input[type="submit"] {
+                padding: 5px 10px;
+                border: 0;
+                border-radius: 5px;
+                color: #fff;
+                background: #4da6ff;
+                box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
+            }
+    body 
+        div.container
+            form(action="/fibonacci", method="POST")
+                label(for="number" class="label") Número:
+                input(type="text" name="number" id="number" placeholder="Número")
+                input(type="submit" value="Calcular fibonacci")
