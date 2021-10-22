@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t spike/noderedis-dev .
+
+script:
+  - docker run spike/noderedis-dev npm run test
